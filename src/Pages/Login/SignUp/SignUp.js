@@ -1,12 +1,21 @@
 import React, { useRef } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
+import auth from './../../../firebase.init';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 const SignUp = () => {
 //     const emailRef = useRef("");
 //   const passRef = useRef("");
 //   const nameRef = useRef("");
-  const navigate = useNavigate()
+const [
+    createUserWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useCreateUserWithEmailAndPassword(auth);
+
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -14,11 +23,14 @@ const SignUp = () => {
     const name = event.target.name.value;
     const email = event.target.email.value;
     const pass = event.target.pass.value;
-    console.log(name, email, pass);
+    createUserWithEmailAndPassword(email, pass)
     
   };
   const handleToLogin=(event)=>{
     navigate('/login')
+}
+if(user){
+    navigate('/home')
 }
   return (
     <div  className="container w-50 mx-auto">

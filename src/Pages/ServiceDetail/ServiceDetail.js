@@ -1,11 +1,16 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const ServiceDetail = () => {
-    const {serviceId} = useParams()
+    const {serviceId} = useParams();
+    const navigate = useNavigate();
+    const handleCheckout = event =>{
+        navigate('/checkout')
+    }
     return (
         <div>
-            <h2>Welcome to detail</h2>
+            <h2>Welcome to detail: {serviceId}</h2>
+            <button onClick={handleCheckout}>Checkout</button>
         </div>
     );
 };
