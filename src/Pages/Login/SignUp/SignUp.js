@@ -7,6 +7,7 @@ import {
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import PageTitle from "../../Shared/PageTitle/PageTitle";
 
 const SignUp = () => {
   //     const emailRef = useRef("");
@@ -42,6 +43,7 @@ const SignUp = () => {
   }
   return (
     <div className="container w-50 mx-auto">
+      <PageTitle title="Signup"></PageTitle>
       <Form onSubmit={handleSubmit}>
         <h2 className="text-center mb-3">Please Sign Up</h2>
         <Form.Group className="mb-3" controlId="formBasicEmail">
